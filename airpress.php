@@ -109,7 +109,7 @@ function airpress_get_current_record(){
 function airpress_execute_deferred_queries() {
 	global $airpress;
 
-	$airpress->run_deferred_queries(sanitize_title($_GET["stash_key"]));
+	$airpress->run_deferred_queries(filter_input(INPUT_GET, 'stash_key', FILTER_SANITIZE_SPECIAL_CHARS));
 
 	wp_send_json_success(array());
 }
